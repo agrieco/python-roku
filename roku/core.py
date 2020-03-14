@@ -49,6 +49,7 @@ COMMANDS = {
     "power": "Power",
     "poweroff": "PowerOff",
     "poweron": "PowerOn",
+    "install": "install"
 }
 
 SENSORS = ("acceleration", "magnetic", "orientation", "rotation")
@@ -303,6 +304,9 @@ class Roku(object):
 
     def store(self, app):
         return self._post("/launch/11", params={"contentID": app.id})
+
+    def install(self,app):
+            return self._post("/install/%s" % app)
 
     def input(self, params):
         return self._post("/input", params=params)
